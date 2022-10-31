@@ -43,7 +43,7 @@ const AccountModal = ({isActive, closeFunc}) => {
   return (
     <Modal title={'Акаунт'} isActive={isActive} closeModal={closeFunc}>
       {!isConfirmed && <div className='account-modal__confirm'>
-        <input value={password} onChange={(e) => {setPassword(e.target.value)}} type={'password'} placeholder={'Введіть пароль'} />
+        <input value={password} onChange={(e) => {setPassword(e.target.value)}} type={'password'} placeholder={'Введіть пароль'} autoFocus />
         <button className='green clickable' onClick={confirmFunc}>Підтвердити</button>
         <div className='account-modal__text'>{!error ? 'Для внесення змін введіть пароль' : error}</div>
       </div>}

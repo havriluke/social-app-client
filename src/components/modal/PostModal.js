@@ -61,6 +61,7 @@ const PostModal = observer(({isModalActive, closeModalActive, create, edit, para
                 value={text}
                 onChange={(e) => {setText(e.target.value)}}
                 placeholder='Що трапилось?'
+                autoFocus
             />
             <div className='create-post__buttons'>
                 {!params.id && <div className='modal__files'>  

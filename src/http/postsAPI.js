@@ -49,3 +49,7 @@ export const fetchFeed = async (limit, page) => {
     const {data} = await $authHost.get('api/posts', {params: {limit, page}})
     return data
 }
+
+export const uploadPhoto = async (name) => {
+    await $authHost.post('/api/posts/photo', {name})
+}

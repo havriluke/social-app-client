@@ -47,3 +47,7 @@ export const dropBan = async (id) => {
     const {data} = await $authHost.put('/api/user/remove-ban', {id})
     return data
 }
+
+export const uploadAvatar = async (name) => {
+    await $authHost.post('/api/user/avatar', {name})
+}

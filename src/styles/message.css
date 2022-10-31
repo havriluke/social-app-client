@@ -15,7 +15,7 @@
     margin: 2px 0;
     overflow-wrap: break-word;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     gap: 5px;
 }
 .message__wrapper.first > .message {
