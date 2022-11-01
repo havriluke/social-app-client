@@ -55,6 +55,8 @@ const WallProfile = observer(({author}) => {
         })
     }
 
+    console.log(process.env)
+
     return (
         <div className='wall-profile component'>
             <MessageModal isActive={isModalActive} closeFunc={() => {setIsModalActive(false)}} user={user.user} friend={author} />

@@ -81,7 +81,7 @@ const Wall = observer(() => {
       }
 
       <div className='wall__panel panel'>
-        <CheckLine items={checkLineItems} type={type} />
+        <CheckLine items={checkLineItems} type={type} noScroll />
       </div>
 
       {author.id === user.user.id && type === 0 &&

@@ -74,8 +74,8 @@
 }
 
 
-@media (max-width: 620px) {
+@media (max-width: 540px) {
     .chat {
-        min-height: calc(100vh - 125px);
+        height: calc(100vh - 150px - 40px);
     }
 }

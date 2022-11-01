@@ -41,11 +41,14 @@
 }
 
 @media (max-width: 620px) {
-    .friends__list {
+    /* .friends__list {
         min-height: calc(100vh - 180px);
-    }
+    } */
 }
 @media (max-width: 540px) {
+    .friends__list {
+        min-height: calc(100vh - 200px - 60px);
+    }
     .friends__nickname {
         margin-left: 10px;
     }

@@ -71,6 +71,7 @@ const Comments = observer(({postId, increaseCount, decreaseCount}) => {
                 value={currentComment}
                 onChange={(e) => setCurrentComment(e.target.value)}
                 onClick={createComment}
+                noFocus
             />
 
 

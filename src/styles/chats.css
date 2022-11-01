@@ -112,8 +112,13 @@
 }
 
 @media (max-width: 620px) {
-    .chats__list {
+    /* .chats__list {
         min-height: calc(100vh - 130px);
+    } */
+}
+@media (max-width: 540px) {
+    .chats__list {
+        min-height: calc(100vh - 160px - 60px);
     }
 }
 @media (max-width: 460px) {

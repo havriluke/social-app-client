@@ -142,6 +142,7 @@ const Chat = observer(() => {
           }}
           onClick={editId ? confirmEdit : sendMessage}
           edit={Boolean(editId)}
+          hiperFocus
         />
 
     </div>

@@ -1,10 +1,10 @@
 import '../styles/checkLine.css'
 
-const CheckLine = ({items, type}) => {
+const CheckLine = ({items, type, noScroll}) => {
 
     const handleClick = (index) => {
         if (index === type) return
-        window.scrollTo(0, 0)
+        if (!noScroll) window.scrollTo(0, 0)
         items[index].onclick()
     }
 

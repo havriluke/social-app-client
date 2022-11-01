@@ -2,7 +2,7 @@ import React from 'react'
 import plane from '../assets/logos/send-plane-fill.svg'
 import pencilWhite from '../assets/logos/pencil-fill-white.svg'
 
-const MessageInput = ({className, onChange, onClick, value, placeholder, edit}) => {
+const MessageInput = ({className, onChange, onClick, value, placeholder, edit, noFocus, hiperFocus}) => {
 
     const handleKeypress = e => {
         if (e.charCode === 13) {
@@ -17,7 +17,8 @@ const MessageInput = ({className, onChange, onClick, value, placeholder, edit}) 
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            autoFocus
+            onBlur={hiperFocus ? ({ target }) => target.focus() : null}
+            autoFocus={!noFocus}
             onKeyPress={handleKeypress}
           />
           <button
