@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { confirmPassword, editUser } from '../../http/userAPI'
 import { MAIN_ROUTE } from '../../utils/const'
+import Loader from '../Loader'
 import Modal from './Modal'
 
 const AccountModal = ({isActive, closeFunc}) => {
@@ -12,6 +13,7 @@ const AccountModal = ({isActive, closeFunc}) => {
   const [newPassword, setNewPassword] = useState('')
   const [newNickname, setNewNickname] = useState('')
   const [newPhoto, setNewPhoto] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     if (newPhoto === null || newPhoto.type.split('/')[0] === 'image') return
@@ -28,12 +30,13 @@ const AccountModal = ({isActive, closeFunc}) => {
   }
 
   const submitEdit = () => {
+    setIsLoading(true)
     const formData = new FormData()
     formData.append('nickname', newNickname)
     formData.append('password', newPassword)
     formData.append('photo', newPhoto)
     editUser(formData).then(data => {
-      navigate(MAIN_ROUTE)
+      // navigate(MAIN_ROUTE)
       navigate(0)
     }).catch(error => {
       console.log(error.response.data.message)
@@ -42,13 +45,13 @@ const AccountModal = ({isActive, closeFunc}) => {
 
   return (
     <Modal title={'Акаунт'} isActive={isActive} closeModal={closeFunc}>
-      {!isConfirmed && <div className='account-modal__confirm'>
+      {!isConfirmed && !isLoading && <div className='account-modal__confirm'>
         <input value={password} onChange={(e) => {setPassword(e.target.value)}} type={'password'} placeholder={'Введіть пароль'} autoFocus />
         <button className='green clickable' onClick={confirmFunc}>Підтвердити</button>
         <div className='account-modal__text'>{!error ? 'Для внесення змін введіть пароль' : error}</div>
       </div>}
 
-      {isConfirmed && <div className='account-modal__settings'>
+      {isConfirmed && !isLoading && <div className='account-modal__settings'>
         <div className='account-modal__setting'>
           <div className='account-modal__label'>Введіть новий нікнейм</div>
           <input value={newNickname} onChange={(e) => {setNewNickname(e.target.value)}} placeholder={'Новий нікнейм'} />
@@ -68,6 +71,8 @@ const AccountModal = ({isActive, closeFunc}) => {
           <button className='green clickable' onClick={submitEdit}>Підтвердити</button>
         </div>
       </div>}
+
+      {isLoading && <Loader classes={'list-loader'} />}
 
       
     </Modal>

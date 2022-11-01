@@ -12,6 +12,7 @@
     box-shadow: 0 0 5px var(--base-color);
     cursor: pointer;
     transition: all .3s ease 0s;
+    z-index: 5;
 }
 
 .scroll-up-button:hover {
@@ -38,4 +39,15 @@
 }
 .scroll-up-button::after {
     transform: translate(-80%, -50%) rotate(-45deg);
+}
+
+
+@media (max-width: 745px) {
+    .scroll-up-button {
+        left: calc(100% - 65px);
+        transform: translate(0, 50px);
+    }
+    .scroll-up-button.active {
+        transform: translate(0, -15px);
+    }
 }

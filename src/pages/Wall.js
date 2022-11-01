@@ -39,7 +39,7 @@ const Wall = observer(() => {
     {title: 'Друзі', onclick: () => {setType(1)}},
   ]
 
-  const [isPostModal, setIsPostModal, postParams, openModal, deletePost, editPost, createPost] = usePost(listData, setListData)
+  const [isPostModal, setIsPostModal, postParams, openModal, deletePost, editPost, createPost, isPostLoad] = usePost(listData, setListData)
   const [increasePage, listsItems, isLoading, isEmpty, totalPages, page] = useFetchList(fetchFunc, 10, author.id)
 
   const resetData = () => {
@@ -87,6 +87,7 @@ const Wall = observer(() => {
       {author.id === user.user.id && type === 0 &&
         <CreatePost createFunc={() => {openModal({text: '', private: false})}}/>
       }
+      {isPostLoad && <Loader classes={'list-loader'} />}
       {!isAuthorLoading &&
         <ListWrapper
           isEmpty={isEmpty}

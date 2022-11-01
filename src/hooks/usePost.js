@@ -4,6 +4,7 @@ import { addPost, removePost, updatePost } from "../http/postsAPI"
 
 export const usePost = (listData, setListData) => {
     const [isPostModal, setIsPostModal] = useState(false)
+    const [isPostLoad, setIsPostLoad] = useState(false)
     const [postParams, setPostParams] = useState({text: '', private: false})
 
     const openModal = (post) => {
@@ -21,7 +22,9 @@ export const usePost = (listData, setListData) => {
     }
 
     const createPost = (post) => {
+        setIsPostLoad(true)
         addPost(post).then((data) => {
+            setIsPostLoad(false)
             setListData([data, ...listData])
         }).catch((e) => {
             console.log(e.response)
@@ -34,5 +37,5 @@ export const usePost = (listData, setListData) => {
         }).catch((e) => console.log(e.response.data.message))
     }
 
-    return [isPostModal, setIsPostModal, postParams, openModal, deletePost, editPost, createPost]
+    return [isPostModal, setIsPostModal, postParams, openModal, deletePost, editPost, createPost, isPostLoad]
 }

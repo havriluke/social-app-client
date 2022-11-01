@@ -54,14 +54,43 @@
     gap: 7px;
     margin: 15px 0;
 }
+
 .post__photo {
     overflow: hidden;
     margin: 0 -15px;
     max-height: 600px;
+    position: relative;
 }
 .post__photo > img {
     width: 100%;
 }
+.post__photo::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background-image: url('../assets/logos/active/heart-3-fill.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+}
+.post.active .post__photo::after {
+    animation: like-anim 1s 0s linear;
+}
+@keyframes like-anim {
+    25% {
+        transform: translate(-50%, -50%) scale(.8);
+        opacity: .9;
+    }
+    75% {
+        transform: translate(-50%, -50%) scale(.8);
+        opacity: 1;
+    }
+}
+
 .post__parags {
     display: flex;
     flex-direction: column;
@@ -124,6 +153,7 @@
 }
 .post__icon > img {
 }
+
 .post__icon::after {
     content: '';
     position: absolute;
@@ -141,7 +171,7 @@
     opacity: .2;
 }
 
-.post-icons__like.active > img {
+.post.active .post-icons__like > img {
     animation: heart-anim .5s 0s linear;
 }
 .post-icons__like::after {
@@ -149,18 +179,6 @@
 }
 .post-icons__like > div {
     color: var(--red-color);
-}
-.post-icons__like.active::after {
-    animation: bg-anim 1s 0s linear;
-}
-@keyframes bg-anim {
-    50% {
-        opacity: .4;
-        transform: scale(100);
-    } 100% {
-        opacity: 0;
-        transform: scale(20);
-    }
 }
 @keyframes heart-anim {
     50% {

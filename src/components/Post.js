@@ -38,7 +38,7 @@ const Post = observer(({item, deleteFunc, editFunc}) => {
     }
 
     return (
-        <div className={`post component`}>
+        <div className={`post component ${isLikeActive ? 'active' : ''}`}>
             
             <div className='post__info'>
                 <div className='post-info__account' onClick={() => {navigate(`${PAGE_ROUTE}/${item.user.nickname}`)}}>
@@ -74,7 +74,7 @@ const Post = observer(({item, deleteFunc, editFunc}) => {
             </div>
 
             <div className='post__icons'>
-                <div className={`post-icons__like post__icon ${isLikeActive ? 'active' : ''}`} onClick={clickLike}>
+                <div className={`post-icons__like post__icon`} onClick={clickLike}>
                     <img src={isLikeActive ? heartActive : heart} />
                     <div >{likesCount}</div>
                 </div>
