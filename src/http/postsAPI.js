@@ -31,6 +31,7 @@ export const removeComment = async (id) => {
 }
 
 export const addPost = async (post) => {
+    console.log(post.get('photo'));
     const {data} = await $authHost.post('api/posts', post)
     return data
 }

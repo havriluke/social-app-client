@@ -22,10 +22,9 @@ export const usePost = (listData, setListData) => {
 
     const createPost = (post) => {
         addPost(post).then((data) => {
-            data.post['photo'] = data.photo
-            setListData([data.post, ...listData])
+            setListData([data, ...listData])
         }).catch((e) => {
-            console.log(e.response.data.message)
+            console.log(e.response)
         })
     }
 

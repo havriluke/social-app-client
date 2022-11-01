@@ -20,7 +20,6 @@ import { uploadPhoto } from '../http/postsAPI'
 
 const Post = observer(({item, deleteFunc, editFunc}) => {
     const {user} = useContext(Context)
-    const [isPhotoLoaded, setIsPhotoLoaded] = useState(false)
     const navigate = useNavigate()
 
     const [bodyParags, bodyActive, bodyToggle] = usePostBody(item.text)
@@ -37,11 +36,6 @@ const Post = observer(({item, deleteFunc, editFunc}) => {
         const date = new Date(dateNumber)
         return `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
     }
-
-    useEffect(() => {
-        if (!item.photo) return
-        uploadPhoto(item.photo.name).then(() => {setIsPhotoLoaded(true)})
-    }, [item])
 
     return (
         <div className={`post component`}>
@@ -74,8 +68,8 @@ const Post = observer(({item, deleteFunc, editFunc}) => {
                         <div className='post__more'><div></div><div></div><div></div></div>
                     }
                 </div>
-                {item.photo && isPhotoLoaded && <div className='post__photo' onDoubleClick={clickLike} >
-                    <img src={process.env.REACT_APP_API_URL+item.photo.name} />
+                {item.photo && <div className='post__photo' onDoubleClick={clickLike} >
+                    <img src={item.photo} />
                 </div>}
             </div>
 
