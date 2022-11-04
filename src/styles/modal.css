@@ -19,7 +19,7 @@
 
 .modal__top{
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
@@ -71,7 +71,7 @@
 .create-post__top {
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
 }
 .create-post__acc-info {
     display: flex;
@@ -148,7 +148,7 @@
 .account-modal__buttons {
     margin-top: 10px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 #file-upload-button {

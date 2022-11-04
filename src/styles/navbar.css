@@ -34,7 +34,7 @@
     /* color: var(--font-color); */
     font-size: 32px;
     font-family: var(--logo-font-family);
-    cursor: default;
+    cursor: pointer;
 }
 
 .navbar-top__details {

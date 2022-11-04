@@ -100,6 +100,16 @@ const NavBar = observer(() => {
         setPrevLocation(location)
     }, [location])
 
+    const clickButton = (navTo) => {
+        navigate(navTo)
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+    }
+    const clickLogo = () => {
+        navigate(MAIN_ROUTE)
+        navigate(0)
+    }
+
+
     return (
         <div className='navbar'>
 
@@ -107,7 +117,7 @@ const NavBar = observer(() => {
             
             <div className='navbar-top'>
                 <div className='navbar-top__container container'>
-                    <div className='navbar-top__logo'>Shmara</div>
+                    <div className='navbar-top__logo' onClick={clickLogo}>Shmara</div>
                     {user.isAuth && <DropDownList
                         className='navbar-top__details'
                         image={details}
@@ -123,27 +133,27 @@ const NavBar = observer(() => {
                 <div className='navbar-bottom__list navbar-list' >
                     <div
                         className={`navbar-list__item ${activeCell['home'] ? 'active' : ''}`}
-                        onClick={() => navigate(MAIN_ROUTE)}
+                        onClick={() => clickButton(MAIN_ROUTE)}
                     >
                         <img src={activeCell['home'] ? homeActive : homePassive} />
                     </div>
                     <div
                         className={`navbar-list__item ${activeCell['chats'] ? 'active' : ''}`}
-                        onClick={() => navigate(CHATS_ROUTE)}
+                        onClick={() => clickButton(CHATS_ROUTE)}
                     >
                         <img src={activeCell['chats'] ? chatsActive : chatsPassive} />
                         {!!messageCount && <div className='item__count'>{messageCount}</div>}
                     </div>
                     <div
                         className={`navbar-list__item ${activeCell['friends'] ? 'active' : ''}`}
-                        onClick={() => navigate(FRIENDS_ROUTE)}
+                        onClick={() => clickButton(FRIENDS_ROUTE)}
                     >
                         <img src={activeCell['friends'] ? friendsActive : friendsPassive} />
                         {!!friendCount && <div className='item__count'>{friendCount}</div>}
                     </div>
                     {user.user.role === 'ADMIN' && <div
                         className={`navbar-list__item admin ${activeCell['admin'] ? 'active' : ''}`}
-                        onClick={() => navigate(ADMIN_ROUTE)}
+                        onClick={() => clickButton(ADMIN_ROUTE)}
                     >
                         {'ban'}
                     </div>}

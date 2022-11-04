@@ -30,7 +30,7 @@
 }
 
 .post-info__titles {
-    justify-self: start;
+    justify-self: flex-start;
 }
 
 .post-info__name {
